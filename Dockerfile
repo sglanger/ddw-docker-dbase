@@ -2,7 +2,7 @@
 
 FROM postgres
 
-MAINTAINER Nick McSpadden <nmcspadden@gmail.com>
+MAINTAINER Steve Langer <sglanger@bluebottle.com>
 
 ENV DB_NAME database
 ENV DB_USER admin
