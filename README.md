@@ -1,9 +1,9 @@
-postgres-whd
+ddw-postgres
 ============
 
-Docker container for postgres that accepts remote connections from Docker IPs - all 172.17.0.1/16 IP addresses.
+Docker container for central ddw potgres dbase that  accepts remote 
+connections from Docker IPs - all 172.17.0.1/16 IP addresses.
 
-This postgres database is designed for use in the [WebHelpDesk container](https://registry.hub.docker.com/u/macadmins/whd/) and/or with [SalWHD](https://registry.hub.docker.com/u/macadmins/salwhd/).
 
 In addition, now sets up database according to environment variables:  
 DB_NAME database  
