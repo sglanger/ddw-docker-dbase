@@ -1,0 +1,5 @@
+This project is in response to several requests from DDW users that the learning curve of that system was a bit steep. So in the Docker version of DDW we take a more modular and turn-key approach. There is one Docker (ddw-docker-dbase) that hosts the main Postgresql dbase that the DDW gatways will send their results to. There will be another companion Docker (ddw-docker-gway) that will bundle MIRTH as a service, pointing its results to ddw-dbase. 
+
+Herein lies ddw-dbase
+a) Dockerfile (the main build file for the docker
+b) 

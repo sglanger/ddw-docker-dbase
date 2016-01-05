@@ -1,0 +1,49 @@
+from https://blog.openshift.com/day-21-docker-the-missing-tutorial/
+
+################## Local stuff
+Get help on DOcker command line
+>sudo docker help
+
+Getting info on the Docker runtime env
+>sudo docker info
+
+List loaded Docker images
+>sudo docker images
+
+List running Docker processes
+>sudo docker ps
+
+Connect to a running Docker image (in this case named "postgres")
+>sudo docker run -t -i -p 3000 postgres /bin/bash
+
+Commit changes on a Docker Image (in this case the image name is ddw-docker-dbase)
+>sudo docker commit imageID dockerHubAcct/ddw-docker-dbase
+
+Building a new image from a local DOckerFile
+> sudo docker build --rm -t tag-name .
+
+
+#################### Docker Hub commands
+Login to DockerHub
+>sudo docker login
+
+Push committed Docker image to Docker Hub
+>sudo docker push dockerHubAcct/ddw-docker-dbase
+
+Pulling an image
+>sudo docker pull dockerHubAcct/imageName
+
+################### Dockerfile syntax
+https://docs.docker.com/engine/reference/builder/
+and
+http://blog.flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile
+and
+http://blog.flux7.com/blogs/docker/docker-commands
+
+
+################## Managing local file permissions
+http://stackoverflow.com/questions/23544282/what-is-the-best-way-to-manage-permissions-for-docker-shared-volumes
+
+
+
+
