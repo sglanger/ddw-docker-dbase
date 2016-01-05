@@ -3,7 +3,7 @@ This project is in response to several requests from DDW users that the learning
 Herein lies the following ddw-dbase components
 a) Dockerfile 		(the main build file for the docker)
 b) purged-ddw.sql 	(the ddw schema)
-c) service-start.sh (for provisioning the docker)
+c) service-start.sh 	(for provisioning the docker)
 d) run_ddw_db.sh	(a convenience script for automating the build/run/provision cycle)
 e) docker.cheats 	(quick notes for the Docker novice)
 f) this README

@@ -15,6 +15,9 @@ List running Docker processes
 
 Connect to a running Docker image (in this case named "postgres")
 >sudo docker run -t -i -p 3000 postgres /bin/bash
+or
+>sudo docker exec -it -u root ddw-db /bin/bash
+
 
 Commit changes on a Docker Image (in this case the image name is ddw-docker-dbase)
 >sudo docker commit imageID dockerHubAcct/ddw-docker-dbase
@@ -43,6 +46,13 @@ http://blog.flux7.com/blogs/docker/docker-commands
 
 ################## Managing local file permissions
 http://stackoverflow.com/questions/23544282/what-is-the-best-way-to-manage-permissions-for-docker-shared-volumes
+
+#################### Docker Run refernce (including Netowrking)
+https://docs.docker.com/engine/reference/run/#network-settings
+
+# use this to expose the DOcker ports on the host NIC (make sure host is not using the same ports)
+sudo docker run --net="host" --name ddw-db -e POSTGRES_PASSWORD=postgres -d ddw-dbase
+
 
 
 
