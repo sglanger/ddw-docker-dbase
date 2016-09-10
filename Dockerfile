@@ -2,6 +2,7 @@ FROM postgres:9.4
 
 MAINTAINER Steve Langer <sglanger@fastmail.COM>
 ##################################################
+# ddw-docker-dbase
 # Purpose: SGL extensions to postgresql for DDW
 #         inspired by 	https://docs.docker.com/engine/examples/postgresql_service/
 #         and 			https://hub.docker.com/_/postgres/
