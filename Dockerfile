@@ -1,4 +1,4 @@
-FROM postgres: 
+FROM postgres:9.4 
 
 MAINTAINER Steve Langer <sglanger@bluebottle.COM>
 # SGL extensions to postgresql for DDW
