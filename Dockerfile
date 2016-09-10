@@ -1,14 +1,18 @@
 FROM postgres:9.4 
 
 MAINTAINER Steve Langer <sglanger@fastmail.COM>
-# SGL extensions to postgresql for DDW
-# inspired by 	https://docs.docker.com/engine/examples/postgresql_service/
-# and 			https://hub.docker.com/_/postgres/
-
+##################################################
+# Purpose: SGL extensions to postgresql for DDW
+#         inspired by 	https://docs.docker.com/engine/examples/postgresql_service/
+#         and 			https://hub.docker.com/_/postgres/
+#
+# External dependencies: ddw-docker-gway
+#
 # Build with  "sudo docker build --rm=true -t ddw-dbase . "
 # Run it with "sudo docker run --name ddw-db -e POSTGRES_PASSWORD=postgres -d ddw-dbase "
 # Connect to the above instance with "sudo docker exec -it ddw-db /bin/bash"
 # get IP of instance with "sudo docker inspect ddw-db "
+############################################################
 
 ADD purged-ddw.sql /docker-entrypoint-initdb.d/purged-ddw.sql
 ADD service-start.sh /docker-entrypoint-initdb.d/service-start.sh
