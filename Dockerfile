@@ -1,23 +1,31 @@
-FROM postgres: 
+FROM postgres:9.2 
 
-MAINTAINER Steve Langer <sglanger@bluebottle.COM>
-# SGL extensions to postgresql for DDW
+MAINTAINER Steve Langer <sglanger@fastmail.COM>
+###############################################################
+# DDW-dbase
+# extensions to postgresql for DDW
 # inspired by 	https://docs.docker.com/engine/examples/postgresql_service/
 # and 			https://hub.docker.com/_/postgres/
+#
+# External files: "ADD" lines below and
+#		run_ddw_db.sh
+########################################################
 
 # Build with  "sudo docker build --rm=true -t ddw-dbase . "
 # Run it with "sudo docker run --name ddw-db -e POSTGRES_PASSWORD=postgres -d ddw-dbase "
 # Connect to the above instance with "sudo docker exec -it ddw-db /bin/bash"
 # get IP of instance with "sudo docker inspect ddw-db "
 
+# standard tools
 ADD purged-ddw.sql /docker-entrypoint-initdb.d/purged-ddw.sql
 ADD service-start.sh /docker-entrypoint-initdb.d/service-start.sh
-RUN chmod 777 /docker-entrypoint-initdb.d/purged-ddw.sql
-RUN chmod 777 /docker-entrypoint-initdb.d/service-start.sh
-RUN apt-get update && apt-get install nano
+RUN chmod -R 777 /docker-entrypoint-initdb.d
+RUN apt-get update && apt-get -y install nano
+ENV TERM xterm
+
 
 ########### Create a POstgresql cluster as ROOT
-RUN pg_createcluster -u postgres 9.4 main
+RUN pg_createcluster -u postgres 9.2 main
 
 # Run the rest of the commands as the ``postgres`` user 
 USER postgres
@@ -31,11 +39,11 @@ RUN    /etc/init.d/postgresql start &&\
 
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
-RUN echo "host all  all    0.0.0.0/0  trust" >> /etc/postgresql/9.4/main/pg_hba.conf 
-RUN echo "host all  all    127.0.0.1/32 trust" >> /etc/postgresql/9.4/main/pg_hba.conf
+RUN echo "host all  all    0.0.0.0/0  trust" >> /etc/postgresql/9.2/main/pg_hba.conf 
+RUN echo "host all  all    127.0.0.1/32 trust" >> /etc/postgresql/9.2/main/pg_hba.conf
 
-# STEP 21: And add ``listen_addresses`` to ``/etc/postgresql/9.4/main/postgresql.conf``
-RUN echo "listen_addresses = '*'" >> /etc/postgresql/9.4/main/postgresql.conf
+# STEP 21: And add ``listen_addresses`` to ``/etc/postgresql/9.2/main/postgresql.conf``
+RUN echo "listen_addresses = '*'" >> /etc/postgresql/9.2/main/postgresql.conf
 
 # STEP 22: Expose the PostgreSQL port
 EXPOSE 5432
@@ -45,7 +53,7 @@ VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
 
 # STEP 23: Set the default command to run when starting the container
-CMD ["/usr/lib/postgresql/9.4/bin/postgres", "-D", "/var/lib/postgresql/9.4/main", "-c", "config_file=/etc/postgresql/9.4/main/postgresql.conf"]
+CMD ["/usr/lib/postgresql/9.2/bin/postgres", "-D", "/var/lib/postgresql/9.2/main", "-c", "config_file=/etc/postgresql/9.2/main/postgresql.conf"]
 
 # When I run below the Docker starts, then dies
 #   CMD /docker-entrypoint-initdb.d/service-start.sh

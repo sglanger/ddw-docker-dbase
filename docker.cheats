@@ -25,6 +25,9 @@ Commit changes on a Docker Image (in this case the image name is ddw-docker-dbas
 Building a new image from a local DOckerFile
 > sudo docker build --rm -t tag-name .
 
+Exporting or importing a Docker image
+https://www.jamescoyle.net/how-to/1512-export-and-import-a-docker-image-between-nodes
+
 
 #################### Docker Hub commands
 Login to DockerHub
@@ -42,6 +45,8 @@ and
 http://blog.flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile
 and
 http://blog.flux7.com/blogs/docker/docker-commands
+and
+https://github.com/wsargent/docker-cheat-sheet
 
 
 ################## Managing local file permissions
