@@ -22,7 +22,9 @@ ADD service-start.sh /docker-entrypoint-initdb.d/service-start.sh
 RUN chmod -R 777 /docker-entrypoint-initdb.d
 RUN apt-get update && apt-get -y install nano
 ENV TERM xterm
-
+RUN apt-get -y install net-tools
+RUN apt-get -y install nmap
+RUN apt-get -y install ssh
 
 ########### Create a POstgresql cluster as ROOT
 RUN pg_createcluster -u postgres 9.2 main

@@ -4,6 +4,7 @@ from https://blog.openshift.com/day-21-docker-the-missing-tutorial/
 Get help on DOcker command line
 >sudo docker help
 
+
 Getting info on the Docker runtime env
 >sudo docker info
 
